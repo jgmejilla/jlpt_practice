@@ -1,6 +1,10 @@
 let flashcards
 let flashcard
-
+let score = {
+    'rights': 0,
+    'wrongs': 0,
+    'percentage': 0,
+}
 
 class Flashcard { 
     constructor(expression, reading, meaning, next=0, revealed=false) {
@@ -25,7 +29,14 @@ async function makeFlashcards() {
 }
 
 function newFlashcard() {
-    document.getElementById('meaning').textContent = ''
+    // reset buttons
+    const prerevealButtons = document.getElementById('prereveal-buttons')
+    prerevealButtons.style['display'] = 'flex'
+    const postrevealButtons = document.getElementById('postreveal-buttons')
+    postrevealButtons.style['display'] = 'none'
+    
+    // reset meaning 
+    document.getElementById('meaning').textContent = '' 
     flashcard = pickFlashcard() 
     displayFlashcard(flashcard)
 }
@@ -53,6 +64,33 @@ function revealFlashcard() {
     const meaning = document.getElementById('meaning')
     meaning.textContent = flashcard.meaning
     flashcard.revealed = true
+
+    const prerevealButtons = document.getElementById('prereveal-buttons')
+    prerevealButtons.style['display'] = 'none'
+    const postrevealButtons = document.getElementById('postreveal-buttons')
+    postrevealButtons.style['display'] = 'flex'
+}
+
+function updateScore(key) {
+    // 1 = correct, 2 = wrong
+    if (key == 1) score.rights += 1
+    else score.wrongs += 1
+    if (score.rights == 0 && score.wrongs == 0) score.percentage = 0
+    else score.percentage = `${Math.floor(score.rights/(score.rights+score.wrongs) * 100)}%`
+
+
+    const rights = document.querySelector('#rights')
+    const wrongs = document.querySelector('#wrongs')
+    const percentage = document.querySelector('#percentage')
+    
+
+    rights.textContent = score.rights
+    wrongs.textContent = score.wrongs
+    percentage.textContent = score.percentage
+
+    
+    console.log(score.rights, score.wrongs)
+    newFlashcard()
 }
 
 /* input management */
@@ -60,13 +98,8 @@ function revealFlashcard() {
 function keydownManager(event) {
     event.preventDefault()
     if (event.key == ' ') {
-        if (flashcard.revealed == true) {
-            flashcard.revealed = false
-            newFlashcard()
-        }
-        else {
-            revealFlashcard()
-        }
+        revealFlashcard()
+        
     }
 
     if (event.key == 'r') {
@@ -76,6 +109,14 @@ function keydownManager(event) {
         else {toggle.checked = true}
       
         toggleKana()
+    }
+
+    if (event.key == '1') {
+        updateScore(1)
+    }
+
+    if (event.key == '2') {
+        updateScore(2) 
     }
  }
 
@@ -92,7 +133,6 @@ function toggleKana() {
         label.textContent = 'Show reading (R)'
     }
 }
-
 
 
 async function main() {

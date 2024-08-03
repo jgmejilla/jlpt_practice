@@ -19,19 +19,26 @@
 
 <body class="h-screen w-full">
 
+<!-- toggle buttons -->
+
 <div class="input absolute inset-4 text-sm sm:text-lg ">
     <label class="switch">
-        <input type="checkbox" id="toggle-kana" onclick="toggleKana()" checked>
+        <input class="
+        peer-checked:bg-gradient-to-r from-blue-500 to-indigo-500" type="checkbox" id="toggle-kana" onclick="toggleKana()" checked>
         <span class="slider round"></span>
     </label>
     <label id="toggle-kana-label" 
     class="absolute transform translate-y-1 translate-x-3 sm:translate-y-0 
-    text-gray-500 :translate-x-2">Hide reading (R)</label>
+    text-gray-500 :translate-x-2"><span style="font-family:'JetBrains Mono'">Hide reading</span> <span>(R)</span></label>
 </div>
 
+<!-- main text -->
 
-
-    
+<div class="w-full flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-52 items-center justify-center sm:translate-y-60">
+    <h2 id="score" class="tracking-wide text-2xl sm:text-3xl italic text-gray-500">
+        <span class="text-green-500" id="rights">0</span>/<span class="text-red-500" id="wrongs">0</span>/<span id="percentage">0%</span>
+    </h2>
+</div>
 
 <div class="w-full text-center flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
     <h1 id="expression" class="text-5xl sm:text-9xl"></h1>
@@ -46,13 +53,34 @@
     style="font-family:'Inter';"></h2>
 </div>
 
-<div class="absolute w-2/3 h-14 border-2 bottom-0 transform left-1/2 -translate-x-1/2 flex
-items-center justify-center">
-    <button onclick="(()=>alert('hi'))()" class="
-        bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
-    " style="font-family:'Inter';">
-        hello
-    </button>
+
+
+<!-- footer buttons -->
+
+<div id="prereveal-buttons" class="absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 flex items-center justify-center gap-20">
+    <div class="flex flex-col items-center gap-1">
+        <span class='text-xs italic text-gray-400'style="font-family:'JetBrains Mono'">[spacebar]</span>
+        <button onclick="revealFlashcard()" class="bg-gradient-to-br 
+        bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
+            <span class="font-bold text-lg">Reveal</span> 
+        </button>
+    </div>
+</div>
+
+<div id="postreveal-buttons" class="absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 hidden items-center justify-center gap-6">
+    <div class="flex flex-col items-center gap-1">
+        <span class='text-xs text-gray-400'style="font-family:'JetBrains Mono'">[1]</span>
+        <button onclick="updateScore(1)" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
+            <span class="font-bold text-lg">Correct</span> 
+        </button>
+    </div>
+
+    <div class="flex flex-col items-center gap-1">
+        <span class='text-xs text-gray-400'style="font-family:'JetBrains Mono'">[2]</span>
+        <button onclick="updateScore(2)" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded" style="font-family:'Inter';">
+            <span class="font-bold text-lg">Wrong</span> 
+        </button>
+    </div>
 </div>
 
 
