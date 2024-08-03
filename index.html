@@ -19,12 +19,16 @@
 
 <body class="h-screen w-full">
 
-<label class="switch">
-    <input type="checkbox" id="toggle-kana" onclick="toggleKana()" checked>
-    <span class="slider round"></span>
-   
-</label>
-show reading
+<div class="absolute inset-6">
+    <label class="switch">
+        <input type="checkbox" id="toggle-kana" onclick="toggleKana()" checked>
+        <span class="slider round"></span>
+    </label>
+    <label id="toggle-kana-label">Hide kana (R)</label>
+</div>
+
+
+
     
 
 <div class="w-full text-center flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">

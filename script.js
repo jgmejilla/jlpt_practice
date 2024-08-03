@@ -1,7 +1,9 @@
 let flashcards
+let flashcard
+
 
 class Flashcard { 
-    constructor(expression, reading, meaning, next=0) {
+    constructor(expression, reading, meaning, next=0, revealed=false) {
         this.expression = expression
         this.reading = reading
         this.meaning = meaning
@@ -23,7 +25,8 @@ async function makeFlashcards() {
 }
 
 function newFlashcard() {
-    const flashcard = pickFlashcard() 
+    document.getElementById('meaning').textContent = ''
+    flashcard = pickFlashcard() 
     displayFlashcard(flashcard)
 }
 
@@ -34,35 +37,67 @@ function pickFlashcard() {
 }
 
 
-function displayFlashcard(flashcard) {
+function displayFlashcard() {
     const expression = document.getElementById('expression')
     const reading = document.getElementById('reading')
-    const meaning = document.getElementById('meaning')
 
     expression.textContent = flashcard.expression
-    if (flashcard.expression !== flashcard.reading) 
+    if (flashcard.expression != flashcard.reading) 
         reading.textContent = flashcard.reading
-    meaning.textContent = flashcard.meaning
+    else 
+        reading.textContent = ''
+    
 }
 
-function keydown(event) {
+function revealFlashcard() {
+    const meaning = document.getElementById('meaning')
+    meaning.textContent = flashcard.meaning
+    flashcard.revealed = true
+}
+
+/* input management */
+
+function keydownManager(event) {
+    event.preventDefault()
     if (event.key == ' ') {
-        newFlashcard()
+        if (flashcard.revealed == true) {
+            flashcard.revealed = false
+            newFlashcard()
+        }
+        else {
+            revealFlashcard()
+        }
+    }
+
+    if (event.key == 'r') {
+        
+        const toggle = document.getElementById('toggle-kana') 
+        if (toggle.checked) toggle.checked = false
+        else {toggle.checked = true}
+      
+        toggleKana()
+    }
+ }
+
+function toggleKana(event) {
+    const toggle = document.getElementById('toggle-kana')
+    const reading = document.getElementById('reading')
+    const label = document.getElementById('toggle-kana-label')
+    if (toggle.checked) {
+        reading.style.display = "inline"
+        label.textContent = 'Hide kana (R)'
+    }
+    else {
+        reading.style.display = "none"
+        label.textContent = 'Show kana (R)'
     }
 }
 
-function toggleKana(e) {
-    const toggle = document.getElementById('toggle-kana')
-    const reading = document.getElementById('reading')
-    if (toggle.checked) reading.style.display = "inline"
-    else reading.style.display = "none"
-}
+
 
 async function main() {
     await makeFlashcards() 
-    document.addEventListener('keydown', keydown)
-
-
+    document.addEventListener('keydown', keydownManager)
     newFlashcard()
 }
 
