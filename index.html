@@ -19,12 +19,14 @@
 
 <body class="h-screen w-full">
 
-<div class="absolute inset-6">
+<div class="input absolute inset-4 text-sm sm:text-lg ">
     <label class="switch">
         <input type="checkbox" id="toggle-kana" onclick="toggleKana()" checked>
         <span class="slider round"></span>
     </label>
-    <label id="toggle-kana-label">Hide kana (R)</label>
+    <label id="toggle-kana-label" 
+    class="absolute transform translate-y-1 translate-x-3 sm:translate-y-0 
+    text-gray-500 :translate-x-2">Hide reading (R)</label>
 </div>
 
 
@@ -40,7 +42,17 @@
 </div>
 
 <div class="w-full flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-20 items-center justify-center sm:translate-y-28">
-    <h2 id="meaning" class="text-2xl sm:text-3xl italic text-gray-500 text-center"></h2>
+    <h2 id="meaning" class="text-2xl sm:text-3xl italic text-gray-500 text-center"
+    style="font-family:'Inter';"></h2>
+</div>
+
+<div class="absolute w-2/3 h-14 border-2 bottom-0 transform left-1/2 -translate-x-1/2 flex
+items-center justify-center">
+    <button onclick="(()=>alert('hi'))()" class="
+        bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
+    " style="font-family:'Inter';">
+        hello
+    </button>
 </div>
 
 

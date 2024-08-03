@@ -79,17 +79,17 @@ function keydownManager(event) {
     }
  }
 
-function toggleKana(event) {
+function toggleKana() {
     const toggle = document.getElementById('toggle-kana')
     const reading = document.getElementById('reading')
     const label = document.getElementById('toggle-kana-label')
     if (toggle.checked) {
         reading.style.display = "inline"
-        label.textContent = 'Hide kana (R)'
+        label.textContent = 'Hide reading (R)'
     }
     else {
         reading.style.display = "none"
-        label.textContent = 'Show kana (R)'
+        label.textContent = 'Show reading (R)'
     }
 }
 
