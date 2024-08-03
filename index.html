@@ -41,14 +41,15 @@
     </label>
     <label id="toggle-kana-label" 
     class="absolute transform translate-y-1 translate-x-3 sm:translate-y-0 
-    text-gray-500 :translate-x-2"><span style="font-family:'JetBrains Mono'">Hide reading</span> <span>(R)</span></label>
+    text-gray-500 :translate-x-2" style="font-family:'JetBrains Mono'"><span>Hide reading</span> <span class="hidden sm:inline">(R)</span></label>
 </div>
 
 <!-- main text -->
 
 <div class="w-full flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-52 items-center justify-center sm:translate-y-60">
-    <h2 id="score" class="tracking-wide text-2xl sm:text-3xl italic text-gray-500">
-        <span class="text-green-500" id="rights">0</span>/<span class="text-red-500" id="wrongs">0</span>/<span id="percentage">0%</span>
+    <h2 id="score" class="tracking-wide text-2xl sm:text-3xl text-gray-500 transform translate-y-10 sm:-translate-y-0"
+    style="font-family:'Poppins'">
+        <span class="text-red-500" id="wrongs">0</span>/<span class="text-green-500" id="rights">0</span>/<span id="percentage">0%</span>
     </h2>
 </div>
 
@@ -69,27 +70,29 @@
 
 <!-- footer buttons -->
 
-<div id="prereveal-buttons" class="absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 flex items-center justify-center gap-20">
+<div id="prereveal-buttons" class="transform -translate-y-2 sm:translate-y-0
+absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 flex items-center justify-center gap-20">
     <div class="flex flex-col items-center gap-1">
-        <span class='text-xs italic text-gray-400'style="font-family:'JetBrains Mono'">[spacebar]</span>
+        <span class='text-xs italic text-gray-400 hidden sm:inline' style="font-family:'JetBrains Mono'">[spacebar]</span>
         <button onclick="revealFlashcard()" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
             <span class="font-bold text-lg">Reveal</span> 
         </button>
     </div>
 </div>
 
-<div id="postreveal-buttons" class="absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 hidden items-center justify-center gap-6">
+<div id="postreveal-buttons" class="transform -translate-y-2 sm:translate-y-0
+absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 hidden items-center justify-center gap-6">
     <div class="flex flex-col items-center gap-1">
-        <span class='text-xs text-gray-400'style="font-family:'JetBrains Mono'">[1]</span>
-        <button onclick="updateScore(1)" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
-            <span class="font-bold text-lg">Correct</span> 
+        <span class='text-xs text-gray-400 hidden sm:inline'style="font-family:'JetBrains Mono'">[1]</span>
+        <button onclick="updateScore(1)" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded" style="font-family:'Inter';">
+            <span class="font-bold text-lg">Wrong</span> 
         </button>
     </div>
-
+ 
     <div class="flex flex-col items-center gap-1">
-        <span class='text-xs text-gray-400'style="font-family:'JetBrains Mono'">[2]</span>
-        <button onclick="updateScore(2)" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded" style="font-family:'Inter';">
-            <span class="font-bold text-lg">Wrong</span> 
+        <span class='text-xs text-gray-400 hidden sm:inline'style="font-family:'JetBrains Mono'">[2]</span>
+        <button onclick="updateScore(2)" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
+            <span class="font-bold text-lg">Correct</span> 
         </button>
     </div>
 </div>

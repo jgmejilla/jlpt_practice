@@ -1,3 +1,11 @@
+/* 
+TO-DO:
+- add persistence via localStorage
+- add FSRS system 
+- fix fonts in toggle and scores
+- reverse position of correct and wrong
+*/
+
 let flashcards
 let flashcard
 let score = {
@@ -72,8 +80,8 @@ function revealFlashcard() {
 }
 
 function updateScore(key) {
-    // 1 = correct, 2 = wrong
-    if (key == 1) score.rights += 1
+    console.log('hello')
+    if (key == 2) score.rights += 1
     else score.wrongs += 1
     if (score.rights == 0 && score.wrongs == 0) score.percentage = 0
     else score.percentage = `${Math.floor(score.rights/(score.rights+score.wrongs) * 100)}%`
