@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JLPT N5 Practice</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
+    <link
+            rel="icon"
+            href=
+            "./assets/あ.svg"
+            type="image/svg+xml"
+        />
+ 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +22,16 @@
     <script src='script.js' defer></script>
 </head>
 
+<img src="./assets/blur.png" class="overflow-hidden fixed opacity-40 right w-200 h-200 top-3/4 sm:top-96 sm:left-90 rotate-90"></img>
+<img src="./assets/blur.png" class="overflow-hidden fixed  opacity-40 right sm:w-120 sm:h-120 inset-0 sm:right-80 transform translate-x-40 rotate-45 sm:translate-x-2/3 sm:-translate-y-60"></img>
 
-<body class="h-screen w-full">
+
+
+<body class="overflow-hidden h-screen w-full bg-gradient-to-br">
+
 
 <!-- toggle buttons -->
+<div class="blob"></div>
 
 <div class="input absolute inset-4 text-sm sm:text-lg ">
     <label class="switch">
@@ -60,8 +72,7 @@
 <div id="prereveal-buttons" class="absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 flex items-center justify-center gap-20">
     <div class="flex flex-col items-center gap-1">
         <span class='text-xs italic text-gray-400'style="font-family:'JetBrains Mono'">[spacebar]</span>
-        <button onclick="revealFlashcard()" class="bg-gradient-to-br 
-        bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
+        <button onclick="revealFlashcard()" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
             <span class="font-bold text-lg">Reveal</span> 
         </button>
     </div>

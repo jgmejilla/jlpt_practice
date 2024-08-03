@@ -5,5 +5,5 @@ df = pandas.read_csv(link)
 df_processed = df[['expression', 'reading', 'meaning']]
 csv = df_processed.to_csv(index=False, sep='\t')
 
-with open('n5.csv', 'w') as file:
+with open('n5_processed.csv', 'w') as file:
     file.write(csv)
