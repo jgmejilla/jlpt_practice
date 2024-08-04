@@ -30,23 +30,28 @@
 <body class="overflow-hidden h-screen w-full bg-gradient-to-br cursor-pointer">
 
 <!-- header/navbar add emojis to navbar -->
-<nav class="absolute h-14 w-1/2 bg-white top-0 left-1/2 transform -translate-x-1/2
-flex items-center justify-center shadow-md rounded-md gap-0 z-10"
+<nav class="absolute h-16 w-full lg:w-2/3 bg-white top-0 left-1/2 transform -translate-x-1/2
+flex items-center justify-center shadow-md lg:rounded-md gap-0 z-10"
 style="font-family:'JetBrains Mono'">
-
-<div class="h-full z-10 border-0 flex-1 flex items-center justify-center 
-bg-gradient-to-r from-white to-white hover:bg-gradient-to-br font-bold rounded-bl-md
-hover:text-white hover:from-blue-500  hover:to-indigo-500  
-active:text-white hover:from-blue-500  hover:to-indigo-500  
-">🌱 study</div>
-<div class="h-full z-10 border-0 flex-1 flex items-center justify-center 
-bg-gradient-to-r from-white to-white hover:bg-gradient-to-tl font-bold hover:text-white 
-hover:from-indigo-500  hover:to-purple-500 ">📋 vocabulary</div>
-<div class="h-full z-10 border-0 flex-1 flex items-center justify-center 
-bg-gradient-to-r from-white to-white hover:bg-gradient-to-r font-bold hover:text-white 
-hover:from-purple-500 hover:to-blue-500 rounded-br-md ">🐈 about</div>
-
-
+    <div class="font-bold hidden md:flex gap-1 items-center justify-start p-10 md:text-2xl lg:text-3xl" 
+    style="flex:0.7; font-family:'Poppins'">
+        <span class="relative top-0 left-0">⛩️</span>JLPT練習
+    </div>
+    <div class="flex flex-1 h-full">
+        <div class="gap-1 h-full z-10 border-0 flex-1 flex items-center justify-center 
+        bg-gradient-to-r from-white to-white hover:bg-gradient-to-br font-bold
+        hover:text-white hover:from-blue-600  hover:to-indigo-600  
+        active:text-white hover:from-blue-600  hover:to-indigo-600  
+        "><span class="relative top-0 left-0">🌱</span> study</div>
+        <div class="gap-1 h-full z-10 border-0 flex-1 flex items-center justify-center 
+        bg-gradient-to-r from-white to-white hover:bg-gradient-to-tl font-bold hover:text-white 
+        hover:from-indigo-600  hover:to-purple-600 "><span class="
+        relative top-0 left-0">📋</span> vocab</div>
+        <div class="gap-1 h-full z-10 border-0 flex-1 flex items-center justify-center 
+        bg-gradient-to-r from-white to-white hover:bg-gradient-to-r font-bold hover:text-white 
+        hover:from-purple-600 hover:to-blue-500 lg:rounded-br-md "><span class="
+        relative top-0 left-0">🐈</span>about</div>
+    </div>
 </nav>
 
 
@@ -117,7 +122,7 @@ absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 flex items-cent
 absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 hidden items-center justify-center gap-6">
     <div class="flex flex-col items-center gap-1">
         <span class='text-xs text-gray-400 hidden sm:inline italic'style="font-family:'JetBrains Mono'">[1]</span>
-        <button onclick="updateScore(1)" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded" style="font-family:'Inter';">
+        <button onclick="updateScore(1)" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
             <span class="font-bold text-lg">Wrong</span> 
         </button>
     </div>

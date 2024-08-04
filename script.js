@@ -62,8 +62,8 @@ function resetFlashcard() {
     expression.style['color'] = 'black'
     jisho.style.textDecoration = 'none'
   
-    jisho.style.removeProperty('target')
-    jisho.style.removeProperty('href')
+    jisho.removeAttribute('target')
+    jisho.removeAttribute('href')
 }
 
 // currently picked randomly; TO-DO: FSRS algorithm
