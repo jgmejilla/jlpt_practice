@@ -17,6 +17,8 @@ const postrevealButtons = document.getElementById('postreveal-buttons')
 
 const toggle = document.getElementById('toggle-kana')
 const label = document.getElementById('toggle-kana-label')
+const toggleJP = document.getElementById('toggle-japanese')
+const labelJP = document.getElementById('toggle-japanese-label')
 
 let flashcards
 let flashcard
@@ -36,7 +38,7 @@ class Flashcard {
 }
 
 async function makeFlashcards() {
-    const response = await fetch('./preprocess/n5_processed.csv')
+    const response = await fetch('./../preprocess/n5_processed.csv')
     const text = await response.text()
     const lines = text.split('\n').slice(1) 
 
@@ -143,10 +145,16 @@ function keydownManager(event) {
         if (!flashcard.revealed) return
         updateScore(2) 
     }
+
+    if (event.key == 'e') {
+        if (toggleJP.checked) toggleJP.checked = false
+        else toggleJP.checked = true
+
+        toggleJapanese()
+    }
  }
 
 function toggleKana() {
-
     if (toggle.checked) {
         reading.style.display = "inline"
         label.textContent = 'Hide reading (R)'
@@ -155,6 +163,22 @@ function toggleKana() {
         reading.style.display = "none"
         label.textContent = 'Show reading (R)'
     }
+}
+
+function toggleJapanese() {
+    if (toggleJP.checked) {
+        labelJP.textContent = 'サイトの言語: 日本語'
+        translate()
+    }
+    else {
+        
+        labelJP.textContent = 'Site language: English'
+    }
+}
+
+function translate() {
+    console.log('Hi, mom! Translation in progress...')
+    /* https://www.w3schools.com/howto/howto_google_translate.asp */ 
 }
 
 async function main() {

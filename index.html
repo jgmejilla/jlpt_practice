@@ -18,8 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src='script.js' defer></script>
+    <link rel="stylesheet" href="src/styles.css">
+    <script src='./src/script.js' defer></script>
 </head>
 
 <img src="./assets/blur.png" class="z-0 select-none overflow-hidden fixed opacity-25 right w-200 h-200 top-3/4 sm:top-96 sm:left-90 rotate-90"></img>
@@ -58,15 +58,31 @@ style="font-family:'JetBrains Mono'">
 <!-- toggle buttons -->
 
 <div class="input absolute w-60 z-0 h-10 inset-4 text-sm sm:text-lg 
-tr">
-    <label class="switch">
-        <input class="
-        peer-checked:bg-gradient-to-r from-blue-500 to-indigo-500" type="checkbox" id="toggle-kana" onclick="toggleKana()" checked>
-        <span class="slider round"></span>
-    </label>
-    <label id="toggle-kana-label" 
-    class="absolute transform translate-y-1 translate-x-3 sm:translate-y-0 
-    text-gray-500 :translate-x-2" style="font-family:'JetBrains Mono'"><span>Hide reading</span> <span class="hidden sm:inline">(R)</span></label>
+top-0 left-0 w-full p-2 lg:w-2/3 flex md:items-center md:justify-start
+ transform translate-y-20 left-1/2 -translate-x-1/2 flex-col md:flex-row md:gap-12 
+ md:gap-16 items-start justify-start gap-2">
+    <div class="">
+        <label class="switch">
+            <input class="
+            peer-checked:bg-gradient-to-r from-blue-500 to-indigo-500" type="checkbox" id="toggle-kana" onclick="toggleKana()" checked>
+            <span class="slider round"></span>
+        </label>
+        <label id="toggle-kana-label" 
+        class="md:relative absolute transform translate-y-1 translate-x-2 lg:translate-x-3 sm:translate-y-0 
+        text-gray-500" style="font-family:'JetBrains Mono'"><span>Hide reading</span> <span class="hidden sm:inline">(R)</span></label>
+    </div>
+
+    <div class="">
+        <label class="switch">
+            <input class="
+            peer-checked:bg-gradient-to-r from-blue-500 to-indigo-500" type="checkbox" id="toggle-japanese" onclick="toggleJapanese()">
+            <span class="slider round"></span>
+        </label>
+        <label id="toggle-japanese-label" 
+        class="md:relative absolute transform lg:translate-x-3 sm:translate-y-0 
+        text-gray-500 text-0 translate-x-2 translate-y-1" style="font-family:'JetBrains Mono'"><span class="">Site language: English</span> <span class="hidden sm:inline">(E)</span></label>
+    </div>
+
 </div>
 
 <!-- main text -->
