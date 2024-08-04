@@ -46,7 +46,7 @@ async function makeFlashcards() {
         const [expression, reading, meaning] = line.split('\t')
         return new Flashcard(expression, reading, meaning)
     })
-
+    console.log(flashcards)
     return flashcards
 }
 
