@@ -22,18 +22,38 @@
     <script src='script.js' defer></script>
 </head>
 
-<img src="./assets/blur.png" class="overflow-hidden fixed opacity-25 right w-200 h-200 top-3/4 sm:top-96 sm:left-90 rotate-90"></img>
-<img src="./assets/blur.png" class="overflow-hidden fixed opacity-25 right sm:w-120 sm:h-120 inset-0 sm:right-20 transform translate-x-40 rotate-45 sm:translate-x-3/4 sm:-translate-y-60"></img>
+<img src="./assets/blur.png" class="z-0 select-none overflow-hidden fixed opacity-25 right w-200 h-200 top-3/4 sm:top-96 sm:left-90 rotate-90"></img>
+<img src="./assets/blur.png" class="z-0 select-none overflow-hidden fixed opacity-25 right sm:w-120 sm:h-120 inset-0 sm:right-20 transform translate-x-40 rotate-45 sm:translate-x-3/4 sm:-translate-y-60"></img>
 
 
 
-<body class="overflow-hidden h-screen w-full bg-gradient-to-br">
+<body class="overflow-hidden h-screen w-full bg-gradient-to-br cursor-pointer">
+
+<!-- header/navbar add emojis to navbar -->
+<nav class="absolute h-14 w-1/2 bg-white top-0 left-1/2 transform -translate-x-1/2
+flex items-center justify-center shadow-md rounded-md gap-0 z-10"
+style="font-family:'JetBrains Mono'">
+
+<div class="h-full z-10 border-0 flex-1 flex items-center justify-center 
+bg-gradient-to-r from-white to-white hover:bg-gradient-to-br font-bold rounded-bl-md
+hover:text-white hover:from-blue-500  hover:to-indigo-500  
+active:text-white hover:from-blue-500  hover:to-indigo-500  
+">🌱 study</div>
+<div class="h-full z-10 border-0 flex-1 flex items-center justify-center 
+bg-gradient-to-r from-white to-white hover:bg-gradient-to-tl font-bold hover:text-white 
+hover:from-indigo-500  hover:to-purple-500 ">📋 vocabulary</div>
+<div class="h-full z-10 border-0 flex-1 flex items-center justify-center 
+bg-gradient-to-r from-white to-white hover:bg-gradient-to-r font-bold hover:text-white 
+hover:from-purple-500 hover:to-blue-500 rounded-br-md ">🐈 about</div>
+
+
+</nav>
 
 
 <!-- toggle buttons -->
-<div class="blob"></div>
 
-<div class="input absolute inset-4 text-sm sm:text-lg ">
+<div class="input absolute w-60 z-0 h-10 inset-4 text-sm sm:text-lg 
+tr">
     <label class="switch">
         <input class="
         peer-checked:bg-gradient-to-r from-blue-500 to-indigo-500" type="checkbox" id="toggle-kana" onclick="toggleKana()" checked>
@@ -46,6 +66,8 @@
 
 <!-- main text -->
 
+<!-- score -->
+
 <div class="w-full flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-52 items-center justify-center sm:translate-y-60">
     <h2 id="score" class="tracking-wide text-2xl sm:text-3xl text-gray-500 transform translate-y-10 sm:-translate-y-0"
     style="font-family:'Poppins'">
@@ -53,13 +75,24 @@
     </h2>
 </div>
 
-<div class="w-full text-center flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-    <h1 id="expression" class="text-5xl sm:text-9xl"></h1>
+<!-- h1 expression -->
+
+<div class="w-full text-center flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 
+-translate-y-1/2">
+    <a id="jisho-link" class="">
+        <h1 id="expression" class="text-5xl sm:text-9xl">
+        </h1>
+    </a>
 </div>
 
-<div class="w-full flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 items-center justify-center sm:-translate-y-24">
-    <h2 id="reading" class="text-2xl sm:text-3xl italic text-gray-500"></h2>
+<!-- h2 kana/reading -->
+
+<div class="w-full flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 
+-translate-y-14 items-center justify-center sm:-translate-y-24">
+    <h2 id="reading" class="select-none text-2xl sm:text-3xl italic text-gray-500"></h2>
 </div>
+
+<!-- h2 meaning -->
 
 <div class="w-full flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-20 items-center justify-center sm:translate-y-28">
     <h2 id="meaning" class="text-2xl sm:text-3xl italic text-gray-500 text-center"
@@ -83,14 +116,14 @@ absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 flex items-cent
 <div id="postreveal-buttons" class="transform -translate-y-2 sm:translate-y-0
 absolute w-2/3 h-20 bottom-1 transform left-1/2 -translate-x-1/2 hidden items-center justify-center gap-6">
     <div class="flex flex-col items-center gap-1">
-        <span class='text-xs text-gray-400 hidden sm:inline'style="font-family:'JetBrains Mono'">[1]</span>
+        <span class='text-xs text-gray-400 hidden sm:inline italic'style="font-family:'JetBrains Mono'">[1]</span>
         <button onclick="updateScore(1)" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded" style="font-family:'Inter';">
             <span class="font-bold text-lg">Wrong</span> 
         </button>
     </div>
  
     <div class="flex flex-col items-center gap-1">
-        <span class='text-xs text-gray-400 hidden sm:inline'style="font-family:'JetBrains Mono'">[2]</span>
+        <span class='text-xs text-gray-400 hidden sm:inline italic'style="font-family:'JetBrains Mono'">[2]</span>
         <button onclick="updateScore(2)" class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded" style="font-family:'Inter';">
             <span class="font-bold text-lg">Correct</span> 
         </button>

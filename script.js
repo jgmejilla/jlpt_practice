@@ -6,6 +6,18 @@ TO-DO:
 - reverse position of correct and wrong
 */
 
+const expression = document.getElementById('expression')
+const reading = document.getElementById('reading')
+const meaning = document.getElementById('meaning')
+const jisho = document.getElementById('jisho-link')
+
+
+const prerevealButtons = document.getElementById('prereveal-buttons')
+const postrevealButtons = document.getElementById('postreveal-buttons')
+
+const toggle = document.getElementById('toggle-kana')
+const label = document.getElementById('toggle-kana-label')
+
 let flashcards
 let flashcard
 let score = {
@@ -37,16 +49,21 @@ async function makeFlashcards() {
 }
 
 function newFlashcard() {
-    // reset buttons
-    const prerevealButtons = document.getElementById('prereveal-buttons')
-    prerevealButtons.style['display'] = 'flex'
-    const postrevealButtons = document.getElementById('postreveal-buttons')
-    postrevealButtons.style['display'] = 'none'
-    
-    // reset meaning 
-    document.getElementById('meaning').textContent = '' 
+    resetFlashcard()
     flashcard = pickFlashcard() 
     displayFlashcard(flashcard)
+}
+
+function resetFlashcard() {
+    prerevealButtons.style['display'] = 'flex'    
+    postrevealButtons.style['display'] = 'none'
+    meaning.textContent = ''
+
+    expression.style['color'] = 'black'
+    jisho.style.textDecoration = 'none'
+  
+    jisho.style.removeProperty('target')
+    jisho.style.removeProperty('href')
 }
 
 // currently picked randomly; TO-DO: FSRS algorithm
@@ -56,36 +73,34 @@ function pickFlashcard() {
 }
 
 
-function displayFlashcard() {
-    const expression = document.getElementById('expression')
-    const reading = document.getElementById('reading')
-
+function displayFlashcard() {    
     expression.textContent = flashcard.expression
     if (flashcard.expression != flashcard.reading) 
         reading.textContent = flashcard.reading
     else 
         reading.textContent = ''
-    
 }
 
 function revealFlashcard() {
-    const meaning = document.getElementById('meaning')
-    meaning.textContent = flashcard.meaning
+    meaning.textContent = flashcard.meaning    
     flashcard.revealed = true
 
-    const prerevealButtons = document.getElementById('prereveal-buttons')
-    prerevealButtons.style['display'] = 'none'
-    const postrevealButtons = document.getElementById('postreveal-buttons')
+    prerevealButtons.style['display'] = 'none'  
     postrevealButtons.style['display'] = 'flex'
+
+    expression.style['color'] = '#2563eb'
+    jisho.style.textDecoration = 'underline 4px #2563eb'
+    jisho.style.textUnderlineOffset = '12px'
+    jisho.href = `https://jisho.org/search/${expression.textContent}`
+    jisho.target = '_blank'
+
 }
 
 function updateScore(key) {
-    console.log('hello')
     if (key == 2) score.rights += 1
     else score.wrongs += 1
     if (score.rights == 0 && score.wrongs == 0) score.percentage = 0
     else score.percentage = `${Math.floor(score.rights/(score.rights+score.wrongs) * 100)}%`
-
 
     const rights = document.querySelector('#rights')
     const wrongs = document.querySelector('#wrongs')
@@ -97,7 +112,7 @@ function updateScore(key) {
     percentage.textContent = score.percentage
 
     
-    console.log(score.rights, score.wrongs)
+    // console.log(score.rights, score.wrongs)
     newFlashcard()
 }
 
@@ -120,18 +135,18 @@ function keydownManager(event) {
     }
 
     if (event.key == '1') {
+        if (!flashcard.revealed) return
         updateScore(1)
     }
 
     if (event.key == '2') {
+        if (!flashcard.revealed) return
         updateScore(2) 
     }
  }
 
 function toggleKana() {
-    const toggle = document.getElementById('toggle-kana')
-    const reading = document.getElementById('reading')
-    const label = document.getElementById('toggle-kana-label')
+
     if (toggle.checked) {
         reading.style.display = "inline"
         label.textContent = 'Hide reading (R)'
@@ -141,7 +156,6 @@ function toggleKana() {
         label.textContent = 'Show reading (R)'
     }
 }
-
 
 async function main() {
     await makeFlashcards() 
