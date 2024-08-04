@@ -38,7 +38,7 @@ class Flashcard {
 }
 
 async function makeFlashcards() {
-    const response = await fetch('./../preprocess/n5_processed.csv')
+    const response = await fetch('./../preprocess/n5_processed.csv')    
     const text = await response.text()
     const lines = text.split('\n').slice(1) 
 
@@ -46,6 +46,8 @@ async function makeFlashcards() {
         const [expression, reading, meaning] = line.split('\t')
         return new Flashcard(expression, reading, meaning)
     })
+
+    console.log(text)
     console.log(flashcards)
     return flashcards
 }
